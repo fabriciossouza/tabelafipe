@@ -1,0 +1,44 @@
+
+Configurando o prometheus.yml
+	
+    |=======> Para o prometheus apontar para o target correto, será necessário inserir o ip externo da máquina. Substitua o xxx.xxx.xx.xx pelo número do seu ip externo.
+    |=======> Para descobrir o ip da sua máquina no ubuntu , abra o terminal e digite ifconfig, no ultimo item da lista, terá seu IP.
+acessando prometheus
+
+    |=======> Após o container do prometheus estar rodando, acesse a rota http://localhost:9090/targets?search= e verifque se o kafka está com status "up"
+Caso não esteja, verifique as configurações do prometheus e se o container está rodando corretamente
+
+considerações ao rodar os micros
+
+    |=======> Certifique-se de que os container necessários ( Elasticsearch , kafka, etc) para o funcionamento dos micro-serviços estejam rodando. 
+    |=======> Rode o microserviço normalmente pelo intelij, e veja se apareceu o status "up" na lista de targets do prometheus.
+
+
+acessando grafana
+
+    |=======> Para acessar o grafana, acesse http://localhost:3000
+    |=======> Esse endereço te levará para um tela de login. O usuário e senha padrão é  "usuario" : admin , senha : admin
+    |=======> Ele irá pedir para redefinir a senha e logo em seguida te levará para a home page
+
+
+Criando conexão com o prometheus
+
+    |=======> Para criar uma conexão com o prometheus, no lado superior direito da tela, clique na opção "Add your first data source"
+    |=======> Pesquise por prometheus e clique na opção
+    |=======> no campo "prometheus server url" adicione http://prometheus:9090 e clique em salvar.
+
+
+Dashboards para o kafka 
+
+    |=======> Para adicionar um dashboard, a partir da home page, clique na opção "Create your first dashboard"
+    |=======> clique na opção "import Dashboard"
+    |=======> No campo "Dashboard URL or ID" insira as urls a seguir
+    |=======> Para monitorar CPU dos micros  --> https://grafana.com/grafana/dashboards/11378-justai-system-monitor/
+    |=======> Para monitorar mensagens do KAFKA --> https://grafana.com/grafana/dashboards/11285
+    |=======> Salve o dashboard e pronto, só começar a monitorar.
+
+
+
+
+
+
